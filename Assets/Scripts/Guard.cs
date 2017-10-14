@@ -9,17 +9,16 @@ public class Guard : Character {
 	float moveY;
 	float velX;
 	float velY;
-	public float playerSpeed = 10;
-    public float ToMove;
+	public float playerSpeed = 1;
 	Animator animator;
-    public Transform point1, point2;
-    int point = 1;
-    public GameObject targetA, targetB;
+    public Transform currentWaypoint, point1, point2;
+    //public GameObject targetA, targetB;
+    public float currentPosition = 0.0f;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        currentWaypoint = point2;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -45,9 +44,27 @@ public class Guard : Character {
 
     void CheckPos()
     {
-        if (Vector2.Distance(point1.position, transform.position) > 1)
+        
+        var moveTo = currentWaypoint.transform.position.y - transform.position.y;
+        if (Mathf.Abs(moveTo) <= 0.1f)
         {
-            transform.position += transform.up * ToMove * -1;
+            // At waypoint so stop moving
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+            playerSpeed = -playerSpeed;
+            if (currentWaypoint == point2)
+            {
+                currentWaypoint = point1;
+            }
+            else
+            {
+                currentWaypoint = point2;
+            }
+        }
+        else
+        {
+            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Transform>().localScale.y * playerSpeed);
         }
     }
 }
+//GetComponent<Transform>().localScale.y * playerSpeed
+//GetComponent<Rigidbody2D>().velocity.y
