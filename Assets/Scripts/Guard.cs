@@ -22,11 +22,13 @@ public class Guard : Character {
 	
 	// Update is called once per frame
 	void Update () {
-		//PlayerMove ();
-		//PlayerAnim ();
-        CheckPos();
+        //PlayerMove ();
+        //PlayerAnim ();
+        PaceBackForth();
 	}
-
+    /*
+     * Move the player via horiazontal and vertical inputs. update the velocity from these inputs
+         */
 	void PlayerMove() {
 		this.moveX = Input.GetAxis ("Horizontal");
 		this.moveY = Input.GetAxis ("Vertical");
@@ -35,14 +37,21 @@ public class Guard : Character {
 		velX = rigidBody.velocity.x;
 		velY = rigidBody.velocity.y;
 	}
-
+    /*
+     * animate a player's movement. Set velocity by X and Y
+         */
 	void PlayerAnim() {
 		animator = GetComponent<Animator> ();
 		animator.SetFloat ("VelX", velX);
 		animator.SetFloat ("VelY", velY);
 	}
 
-    void CheckPos()
+    /*
+     * called on update:
+     * 
+     * paces back and forth from current position to currentWaypoint
+         */
+    void PaceBackForth()
     {
         
         var moveTo = currentWaypoint.transform.position.y - transform.position.y;

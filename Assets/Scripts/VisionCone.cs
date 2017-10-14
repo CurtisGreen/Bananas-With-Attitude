@@ -10,7 +10,11 @@ public class VisionCone : MonoBehaviour {
     private float playerSpeed;
     Guard playerScript;
 
-    private void Start()
+    /*
+     * Initializing. Set the component from Guard.cs to playerScript
+     * and set the speed of the player to playerSpeed from playerScript
+         */
+    private void Start() 
     {
         playerScript = this.GetComponent<Guard>();
         playerSpeed = playerScript.playerSpeed;
@@ -21,6 +25,11 @@ public class VisionCone : MonoBehaviour {
         Behaviors();
         playerSpeed = playerScript.playerSpeed;
     }
+
+    /*
+     * if playerSpeed is greater than 0 then draw the sight lines from sightEnd1
+     * else: draw a sightline  from sightEnd2 (IDK where that comes from)
+         */
     void Raycasting()
     {
         if (playerSpeed > 0)
@@ -39,8 +48,9 @@ public class VisionCone : MonoBehaviour {
     {
         if (spotted){
             print("sees player");
+            // maybe show an exclamation mark?
         }
-
+        // 
         
     }
 }
