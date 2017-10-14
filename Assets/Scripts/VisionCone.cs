@@ -8,7 +8,8 @@ public class VisionCone : MonoBehaviour {
 
     public bool spotted = false;
     private float playerSpeed;
-    Guard playerScript;
+    Guard guardScript;
+	Player playerScript;
 
     /*
      * Initializing. Set the component from Guard.cs to playerScript
@@ -16,14 +17,15 @@ public class VisionCone : MonoBehaviour {
          */
     private void Start() 
     {
-        playerScript = this.GetComponent<Guard>();
-        playerSpeed = playerScript.playerSpeed;
+        guardScript = this.GetComponent<Guard>();
+		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
+		playerSpeed = guardScript.playerSpeed;
     }
     // Update is called once per frame
     void Update () {
         Raycasting();
         Behaviors();
-        playerSpeed = playerScript.playerSpeed;
+        playerSpeed = guardScript.playerSpeed;
     }
 
     /*
@@ -47,8 +49,11 @@ public class VisionCone : MonoBehaviour {
     void Behaviors()
     {
         if (spotted){
-            print("sees player");
+            //print("sees player");
             // maybe show an exclamation mark?
+			//reset player to beginning location, lose 1 HP
+			playerScript.transform.position = new Vector3(-5,0,0);
+			playerScript.health--;
         }
         // 
         

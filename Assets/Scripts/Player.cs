@@ -12,6 +12,7 @@ public class Player : Character {
 	public float playerSpeed = 10;
 	Animator animator;
 	protected BoxCollider2D boxcollider;
+	public int health = 3;
 
 	// Use this for initialization
 	void Start () {
