@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VisionCone : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class VisionCone : MonoBehaviour {
     private float playerSpeed;
     Guard guardScript;
 	Player playerScript;
+	Text spottedText;
+	int spottedTimer = 10;
 
     /*
      * Initializing. Set the component from Guard.cs to playerScript
@@ -18,15 +21,23 @@ public class VisionCone : MonoBehaviour {
     private void Start() 
     {
         guardScript = this.GetComponent<Guard>();
-		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
 		playerSpeed = guardScript.playerSpeed;
+		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
+		spottedText = GameObject.Find ("Spotted Message").GetComponent<Text> ();
+		spottedText.text = ("");
     }
     // Update is called once per frame
     void Update () {
         Raycasting();
         Behaviors();
         playerSpeed = guardScript.playerSpeed;
-    }
+		/*
+		spottedTimer -= Time.deltaTime;
+		if (spottedTimer < 0) {
+			spottedText.text = ("");
+		}
+    	*/
+	}
 
     /*
      * if playerSpeed is greater than 0 then draw the sight lines from sightEnd1
@@ -53,7 +64,8 @@ public class VisionCone : MonoBehaviour {
             // maybe show an exclamation mark?
 			//reset player to beginning location, lose 1 HP
 			playerScript.transform.position = new Vector3(-5,0,0);
-			playerScript.health--;
+			playerScript.lives--;
+			spottedText.text = ("You got Spotted");
         }
         // 
         

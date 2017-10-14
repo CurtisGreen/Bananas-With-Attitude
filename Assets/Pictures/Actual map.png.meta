@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 1e8a5f095c2cebe44a0c7b1047a08fcc
-timeCreated: 1508023307
+guid: c0ce21d9ea56c724cad0d8899fb19e3b
+timeCreated: 1508023308
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -57,10 +57,6 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-<<<<<<< HEAD
-    resizeAlgorithm: 0
-=======
->>>>>>> ed81bdef0f7eded76657d912e9979a8450c3e156
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -72,7 +68,7 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape: []
-  spritePackingTag:
-  userData:
-  assetBundleName:
-  assetBundleVariant:
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
