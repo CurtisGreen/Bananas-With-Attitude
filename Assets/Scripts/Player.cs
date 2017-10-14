@@ -11,10 +11,12 @@ public class Player : Character {
 	float velY;
 	public float playerSpeed = 10;
 	Animator animator;
+	protected BoxCollider2D boxcollider;
 
 	// Use this for initialization
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		boxcollider = GetComponent<BoxCollider2D> ();
 		if (spriteRenderer.sprite == null) {
 			spriteRenderer.sprite = right;
 		}
@@ -39,15 +41,20 @@ public class Player : Character {
 	void checkDirection() {
 		if(velX > 0.0f) {
 			this.spriteRenderer.sprite = right;
+			//hardcoding things is totally safe!
+			this.boxcollider.size = new Vector2(0.62f,0.57f);
 		}
 		if(velX < 0.0f) {
 			this.spriteRenderer.sprite = left;
+			this.boxcollider.size = new Vector2(0.62f,0.57f);
 		}
 		if(velY > 0.0f) {
 			this.spriteRenderer.sprite = up;
+			this.boxcollider.size = new Vector2(0.22f,0.57f);
 		}
 		if(velY < 0.0f) {
 			this.spriteRenderer.sprite = down;
+			this.boxcollider.size = new Vector2(0.22f,0.57f);
 		}
 	}
 
