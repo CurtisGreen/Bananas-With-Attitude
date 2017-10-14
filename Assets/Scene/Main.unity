@@ -162,6 +162,16 @@ Prefab:
       propertyPath: point2
       value: 
       objectReference: {fileID: 1735846559}
+    - target: {fileID: 212142877935400236, guid: 614742b9aaa31c643b1b9edf0abe6266,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 349131813
+      objectReference: {fileID: 0}
+    - target: {fileID: 212142877935400236, guid: 614742b9aaa31c643b1b9edf0abe6266,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 614742b9aaa31c643b1b9edf0abe6266, type: 2}
   m_IsPrefabParent: 0
@@ -414,7 +424,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1645744069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.035, y: -0.162, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
