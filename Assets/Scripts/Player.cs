@@ -14,7 +14,10 @@ public class Player : Character {
 
 	// Use this for initialization
 	void Start () {
-		
+		spriteRenderer = GetComponent<SpriteRenderer> ();
+		if (spriteRenderer.sprite = null) {
+			spriteRenderer.sprite = right;
+		}
 	}
 	
 	// Update is called once per frame
