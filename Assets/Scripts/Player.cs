@@ -27,7 +27,7 @@ public class Player : Character {
 		this.moveX = Input.GetAxis ("Horizontal");
 		this.moveY = Input.GetAxis ("Vertical");
 		Vector2 movement = new Vector2 (moveX, moveY);
-		rigidBody.velocity = movement * playerSpeed;
+		rigidBody.velocity = movement.normalized * playerSpeed;
 		velX = rigidBody.velocity.x;
 		velY = rigidBody.velocity.y;
 	}
