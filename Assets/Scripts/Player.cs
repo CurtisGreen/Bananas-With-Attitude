@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character {
 
-	public Rigidbody rigidBody;
+	public Rigidbody2D rigidBody;
 	float moveX;
 	float moveY;
 	float velX;
@@ -15,7 +15,7 @@ public class Player : Character {
 	// Use this for initialization
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		if (spriteRenderer.sprite = null) {
+		if (spriteRenderer.sprite == null) {
 			spriteRenderer.sprite = right;
 		}
 	}
@@ -33,6 +33,22 @@ public class Player : Character {
 		rigidBody.velocity = movement * playerSpeed;
 		velX = rigidBody.velocity.x;
 		velY = rigidBody.velocity.y;
+		checkDirection ();
+	}
+
+	void checkDirection() {
+		if(velX > 0.0f) {
+			this.spriteRenderer.sprite = right;
+		}
+		if(velX < 0.0f) {
+			this.spriteRenderer.sprite = left;
+		}
+		if(velY > 0.0f) {
+			this.spriteRenderer.sprite = up;
+		}
+		if(velY < 0.0f) {
+			this.spriteRenderer.sprite = down;
+		}
 	}
 
 	void PlayerAnim() {
