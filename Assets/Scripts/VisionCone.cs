@@ -21,7 +21,11 @@ public class VisionCone : MonoBehaviour {
     
     void Behaviors()
     {
-
+        if (spotted)
+        {
+            print("sees player");
+        }
+        
     }
 }
 
