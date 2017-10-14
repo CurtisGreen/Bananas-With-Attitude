@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Character {
 
-	public Rigidbody2D rigidBody;
+	public Rigidbody rigidBody;
 	float moveX;
 	float moveY;
 	float velX;
@@ -30,23 +30,6 @@ public class Player : Character {
 		rigidBody.velocity = movement * playerSpeed;
 		velX = rigidBody.velocity.x;
 		velY = rigidBody.velocity.y;
-
-		checkDirection ();
-	}
-
-	void checkDirection() {
-		if (this.velX > 0.0f) {
-			this.spriteRenderer.sprite = this.right;
-		}
-		if (this.velX < 0.0f) {
-			this.spriteRenderer.sprite = this.left;
-		}
-		if (this.velY > 0.0f) {
-			this.spriteRenderer.sprite = this.up;
-		}
-		if (this.velY < 0.0f) {
-			this.spriteRenderer.sprite = this.down;
-		}
 	}
 
 	void PlayerAnim() {
@@ -54,6 +37,4 @@ public class Player : Character {
 		animator.SetFloat ("VelX", velX);
 		animator.SetFloat ("VelY", velY);
 	}
-
-
 }
