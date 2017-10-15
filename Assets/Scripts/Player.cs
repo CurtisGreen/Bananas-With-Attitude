@@ -46,7 +46,6 @@ public class Player : Character
 		lifeText = GameObject.Find ("LifeCount").GetComponent<Text> ();
 		lifeText.text = ("Lives: " + lives);
 
-
     }
 
     // Update is called once per frame
