@@ -17,6 +17,7 @@ public class Guard : Character
     public float currentPosition = 0.0f;
 	public bool vert;
     protected BoxCollider2D boxcollider;
+    public float moveTo = 0;
 
 
     // Use this for initialization
@@ -72,8 +73,11 @@ public class Guard : Character
          */
     void PaceBackForth()
     {
+        if (vert)
+            moveTo = currentWaypoint.transform.position.y - transform.position.y;
+        else
+            moveTo = currentWaypoint.transform.position.x - transform.position.x;
 
-        var moveTo = currentWaypoint.transform.position.y - transform.position.y;
         if (Mathf.Abs(moveTo) <= 0.1f)
         {
             // At waypoint so stop moving
@@ -83,18 +87,27 @@ public class Guard : Character
             {
                 currentWaypoint = point1;
                 //Debug.Log("down");
-                this.spriteRenderer.sprite = down;
+                if (vert)
+                    this.spriteRenderer.sprite = down;
+                else
+                    this.spriteRenderer.sprite = left;
             }
             else
             {
                 currentWaypoint = point2;
                 //Debug.Log("up");
-                this.spriteRenderer.sprite = up;
+                if (vert)
+                    this.spriteRenderer.sprite = up;
+                else
+                    this.spriteRenderer.sprite = right;
             }
         }
         else
         {
-            GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Transform>().localScale.y * playerSpeed);
+            if (vert)
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Transform>().localScale.y * playerSpeed);
+            else
+                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Transform>().localScale.x * playerSpeed, 0);
         }
     }
 }

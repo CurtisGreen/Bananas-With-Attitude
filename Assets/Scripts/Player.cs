@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 using UnityEngine.UI;
 
@@ -16,6 +17,7 @@ public class Player : Character
     Animator animator;
     protected BoxCollider2D boxcollider;
     public int lives = 3;
+    public bool victory = false;
 
 	public Text spottedText;
 	public float spottedTimer = 3.0f;
@@ -44,7 +46,12 @@ public class Player : Character
         PlayerMove();
         PlayerAnim();
 		if (lives == 0) {
+			SceneManager.LoadScene("Defeat Screen");
 			// transition to defeat scene
+		}
+		if (victory)
+		{
+			SceneManager.LoadScene("Victory Screen");
 		}
 		if (spottedForTimer) {
 			spottedTimer -= Time.deltaTime;
