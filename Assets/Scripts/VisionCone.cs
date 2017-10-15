@@ -32,12 +32,7 @@ public class VisionCone : MonoBehaviour {
         Raycasting();
         Behaviors();
         playerSpeed = guardScript.playerSpeed;
-		/*
-		spottedTimer -= Time.deltaTime;
-		if (spottedTimer < 0) {
-			spottedText.text = ("");
-		}
-    	*/
+		//MessageTimer ();
 	}
 
     /*
@@ -67,10 +62,12 @@ public class VisionCone : MonoBehaviour {
 			playerScript.transform.position = new Vector3(-5,0,0);
 			playerScript.lives--;
 			spottedText.text = ("You got Spotted");
-            Destroy(spottedText, time);
+			//Destroy(spottedText, time);
            
         }
 
     }
+
+
 }
 

@@ -77,13 +77,13 @@ public class Guard : Character
             if (currentWaypoint == point2)
             {
                 currentWaypoint = point1;
-                Debug.Log("down");
+                //Debug.Log("down");
                 this.spriteRenderer.sprite = down;
             }
             else
             {
                 currentWaypoint = point2;
-                Debug.Log("up");
+                //Debug.Log("up");
                 this.spriteRenderer.sprite = up;
             }
         }
