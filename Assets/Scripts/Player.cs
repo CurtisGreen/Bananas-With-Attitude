@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,13 +18,12 @@ public class Player : Character
     protected BoxCollider2D boxcollider;
     public int lives = 3;
 
-	public Text spottedText;
-	public float spottedTimer = 3.0f;
-	public bool spottedForTimer = false;
-	public Text lifeText;
+    public Text spottedText;
+    public float spottedTimer = 3.0f;
+    public bool spottedForTimer = false;
 
-	//keep count of number of bananas rescued
-	public int hostageCount = 0;
+    //keep count of number of bananas rescued
+    public int hostageCount = 0;
 
 
     // Use this for initialization
@@ -35,13 +35,12 @@ public class Player : Character
         {
             spriteRenderer.sprite = right;
         }
-		spottedText = GameObject.Find ("Spotted").GetComponent<Text> ();
-		if (spottedText == null) {
-			print ("nothing");
-		} 
-		spottedText.text = ("");
-		lifeText = GameObject.Find ("LifeCount").GetComponent<Text> ();
-		lifeText.text = ("Lives: " + lives);
+        spottedText = GameObject.Find("Spotted Message").GetComponent<Text>();
+        if (spottedText == null)
+        {
+            print("nothing");
+        }
+        spottedText.text = ("");
     }
 
     // Update is called once per frame
@@ -49,6 +48,7 @@ public class Player : Character
     {
         PlayerMove();
         PlayerAnim();
+
 		if (lives == 0) {
 			// transition to defeat scene
 			SceneManager.LoadScene("Defeat Screen");
@@ -74,7 +74,8 @@ public class Player : Character
         checkDirection();
     }
 
-    void checkDirection(){
+    void checkDirection()
+    {
         if (velX > 0.0f)
         {
             this.spriteRenderer.sprite = right;
@@ -104,4 +105,7 @@ public class Player : Character
         animator.SetFloat("VelX", velX);
         animator.SetFloat("VelY", velY);
     }
+
 }
+
+
