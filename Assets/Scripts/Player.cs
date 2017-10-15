@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+using UnityEngine.UI;
+
 public class Player : Character
 {
 
@@ -17,19 +19,25 @@ public class Player : Character
     public int lives = 3;
     public bool victory = false;
 
+	public Text spottedText;
+	public float spottedTimer = 3.0f;
+	public bool spottedForTimer = false;
+
 	//keep count of number of bananas rescued
 	public int hostageCount = 0;
+
 
     // Use this for initialization
     void Start()
     {
-        playerSpeed = 4;
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxcollider = GetComponent<BoxCollider2D>();
         if (spriteRenderer.sprite == null)
         {
             spriteRenderer.sprite = right;
         }
+		spottedText = GameObject.Find ("Spotted Message").GetComponent<Text> ();
+		spottedText.text = ("");
     }
 
     // Update is called once per frame
@@ -38,13 +46,21 @@ public class Player : Character
         PlayerMove();
         PlayerAnim();
 		if (lives == 0) {
-            SceneManager.LoadScene("Defeat Screen");
-            // transition to defeat scene
-        }
-        if (victory)
-        {
-            SceneManager.LoadScene("Victory Screen");
-        }
+			SceneManager.LoadScene("Defeat Screen");
+			// transition to defeat scene
+		}
+		if (victory)
+		{
+			SceneManager.LoadScene("Victory Screen");
+		}
+		if (spottedForTimer) {
+			spottedTimer -= Time.deltaTime;
+			if (spottedTimer <= 0.0f) {
+				spottedText.text = ("");
+				spottedForTimer = false;
+				spottedTimer = 3.0f;
+			}
+		}
     }
 
     void PlayerMove()
