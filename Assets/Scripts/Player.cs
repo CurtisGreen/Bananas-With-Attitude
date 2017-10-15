@@ -9,14 +9,15 @@ public class Player : Character {
 	float moveY;
 	float velX;
 	float velY;
-	public float playerSpeed = 10;
+	public float playerSpeed = 4;
 	Animator animator;
 	protected BoxCollider2D boxcollider;
 	public int lives = 3;
 
 	// Use this for initialization
 	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer> ();
+        playerSpeed = 4;
+        spriteRenderer = GetComponent<SpriteRenderer> ();
 		boxcollider = GetComponent<BoxCollider2D> ();
 		if (spriteRenderer.sprite == null) {
 			spriteRenderer.sprite = right;
