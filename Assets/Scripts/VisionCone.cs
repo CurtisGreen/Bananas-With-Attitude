@@ -14,6 +14,7 @@ public class VisionCone : MonoBehaviour {
 	Text spottedText;
 	int spottedTimer = 10;
     public float time = 1;
+    public Vector2 position;
 
     /*
      * Initializing. Set the component from Guard.cs to playerScript
@@ -26,14 +27,16 @@ public class VisionCone : MonoBehaviour {
 		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
 		spottedText = GameObject.Find ("Spotted Message").GetComponent<Text> ();
 		spottedText.text = ("");
+        position = playerScript.transform.position;
     }
     // Update is called once per frame
     void Update () {
         Raycasting();
         Behaviors();
         playerSpeed = guardScript.playerSpeed;
-		//MessageTimer ();
-	}
+        //MessageTimer ();
+ 
+    }
 
     /*
      * if playerSpeed is greater than 0 then draw the sight lines from sightEnd1
@@ -59,8 +62,12 @@ public class VisionCone : MonoBehaviour {
             //print("sees player");
             // maybe show an exclamation mark?
 			//reset player to beginning location, lose 1 HP
-			playerScript.transform.position = new Vector3(-5,0,0);
+			//playerScript.transform.position = new Vector3(-5,0,0);
 			playerScript.lives--;
+            if (playerScript.lives == 0)
+                playerScript.transform.position = position;
+            {
+            }
 			spottedText.text = ("You got Spotted");
 			//Destroy(spottedText, time);
            
