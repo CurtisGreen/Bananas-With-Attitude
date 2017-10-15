@@ -60,6 +60,7 @@ public class VisionCone : MonoBehaviour {
 			playerScript.lives--;
 			playerScript.spottedForTimer = true;
 			playerScript.spottedText.text = ("You got Spotted!");
+			playerScript.lifeText.text = ("Lives: " + playerScript.lives);
         }
 
     }
