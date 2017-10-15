@@ -22,6 +22,8 @@ public class Player : Character
     public float spottedTimer = 3.0f;
     public bool spottedForTimer = false;
 
+	public Text lifeText;
+
     //keep count of number of bananas rescued
     public int hostageCount = 0;
 
@@ -35,12 +37,16 @@ public class Player : Character
         {
             spriteRenderer.sprite = right;
         }
-        spottedText = GameObject.Find("Spotted Message").GetComponent<Text>();
+        spottedText = GameObject.Find("Spotted").GetComponent<Text>();
         if (spottedText == null)
         {
             print("nothing");
         }
         spottedText.text = ("");
+		lifeText = GameObject.Find ("LifeCount").GetComponent<Text> ();
+		lifeText.text = ("Lives: " + lives);
+
+
     }
 
     // Update is called once per frame

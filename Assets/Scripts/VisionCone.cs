@@ -20,7 +20,6 @@ public class VisionCone : MonoBehaviour {
         guardScript = this.GetComponent<Guard>();
 		playerSpeed = guardScript.playerSpeed;
 		playerScript = GameObject.Find ("Player").GetComponent<Player> ();
-
     }
     // Update is called once per frame
     void Update () {
