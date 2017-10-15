@@ -59,7 +59,7 @@ public class VisionCone : MonoBehaviour {
             //print("sees player");
             // maybe show an exclamation mark?
 			//reset player to beginning location, lose 1 HP
-			playerScript.transform.position = new Vector3(-5,0,0);
+			playerScript.transform.position = new Vector3(8.577f,0.11f,0.0f);
 			playerScript.lives--;
 			spottedText.text = ("You got Spotted");
 			//Destroy(spottedText, time);

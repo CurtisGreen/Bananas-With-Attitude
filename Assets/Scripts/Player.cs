@@ -15,6 +15,9 @@ public class Player : Character
     protected BoxCollider2D boxcollider;
     public int lives = 3;
 
+	//keep count of number of bananas rescued
+	public int hostageCount = 0;
+
     // Use this for initialization
     void Start()
     {
@@ -32,6 +35,9 @@ public class Player : Character
     {
         PlayerMove();
         PlayerAnim();
+		if (lives == 0) {
+			// transition to defeat scene
+		}
     }
 
     void PlayerMove()
@@ -50,22 +56,22 @@ public class Player : Character
         {
             this.spriteRenderer.sprite = right;
             //hardcoding things is totally safe!
-            this.boxcollider.size = new Vector2(0.62f, 0.57f);
+            this.boxcollider.size = new Vector2(0.6f, 0.5f);
         }
         if (velX < 0.0f)
         {
             this.spriteRenderer.sprite = left;
-            this.boxcollider.size = new Vector2(0.62f, 0.57f);
+            this.boxcollider.size = new Vector2(0.6f, 0.55f);
         }
         if (velY > 0.0f)
         {
             this.spriteRenderer.sprite = up;
-            this.boxcollider.size = new Vector2(0.22f, 0.57f);
+            this.boxcollider.size = new Vector2(0.20f, 0.5f);
         }
         if (velY < 0.0f)
         {
             this.spriteRenderer.sprite = down;
-            this.boxcollider.size = new Vector2(0.22f, 0.57f);
+            this.boxcollider.size = new Vector2(0.20f, 0.5f);
         }
     }
 
