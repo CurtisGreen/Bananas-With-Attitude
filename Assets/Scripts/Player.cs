@@ -23,6 +23,7 @@ public class Player : Character
     public bool spottedForTimer = false;
 
 	public Text lifeText;
+	public Text hostageText;
 
     //keep count of number of bananas rescued
     public int hostageCount = 0;
@@ -45,6 +46,8 @@ public class Player : Character
         spottedText.text = ("");
 		lifeText = GameObject.Find ("LifeCount").GetComponent<Text> ();
 		lifeText.text = ("Lives: " + lives);
+		hostageText = GameObject.Find ("HostageCount").GetComponent<Text> ();
+		hostageText.text = ("Hostages Rescued: " + hostageCount);
 
     }
 

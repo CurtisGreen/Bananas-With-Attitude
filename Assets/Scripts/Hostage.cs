@@ -15,6 +15,7 @@ public class Hostage : MonoBehaviour {
 			this.gameObject.GetComponent<Renderer> ().enabled = false;
 			hostageGet = false;
 			playerScript.hostageCount++;
+			playerScript.hostageText.text = ("Hostages Rescued: " + playerScript.hostageCount);
 		}
 	}
 
