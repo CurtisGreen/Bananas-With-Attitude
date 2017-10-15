@@ -19,9 +19,10 @@ public class door : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player> ();
     }
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player" && player.hostageCount == 1)
+		print ("hello");
+        if (collider.gameObject.name == "Player" && player.hostageCount == 4)
         {
             SceneManager.LoadScene("Victory Screen");
         }
