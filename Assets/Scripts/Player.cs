@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+using UnityEngine.UI;
 
 public class Player : Character
 {
@@ -15,18 +16,29 @@ public class Player : Character
     Animator animator;
     protected BoxCollider2D boxcollider;
     public int lives = 3;
-    public bool victory = false;
+
+	public Text spottedText;
+	public float spottedTimer = 3.0f;
+	public bool spottedForTimer = false;
+
+	//keep count of number of bananas rescued
+	public int hostageCount = 0;
+
 
     // Use this for initialization
     void Start()
     {
-        playerSpeed = 4;
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxcollider = GetComponent<BoxCollider2D>();
         if (spriteRenderer.sprite == null)
         {
             spriteRenderer.sprite = right;
         }
+		spottedText = GameObject.Find ("Spotted Message").GetComponent<Text> ();
+		if (spottedText == null) {
+			print ("nothing");
+		} 
+		spottedText.text = ("");
     }
 
     // Update is called once per frame
@@ -34,17 +46,17 @@ public class Player : Character
     {
         PlayerMove();
         PlayerAnim();
-<<<<<<< HEAD
-=======
 		if (lives == 0) {
-            SceneManager.LoadScene("Defeat Screen");
-            // transition to defeat scene
-        }
-        if (victory)
-        {
-            SceneManager.LoadScene("Victory Screen");
-        }
->>>>>>> 994131ecc29ef63735fd3f92b867872b1de82855
+			// transition to defeat scene
+		}
+		if (spottedForTimer) {
+			spottedTimer -= Time.deltaTime;
+			if (spottedTimer <= 0.0f) {
+				spottedText.text = ("");
+				spottedForTimer = false;
+				spottedTimer = 3.0f;
+			}
+		}
     }
 
     void PlayerMove()
@@ -63,22 +75,22 @@ public class Player : Character
         {
             this.spriteRenderer.sprite = right;
             //hardcoding things is totally safe!
-            this.boxcollider.size = new Vector2(0.62f, 0.57f);
+            this.boxcollider.size = new Vector2(0.6f, 0.5f);
         }
         if (velX < 0.0f)
         {
             this.spriteRenderer.sprite = left;
-            this.boxcollider.size = new Vector2(0.62f, 0.57f);
+            this.boxcollider.size = new Vector2(0.6f, 0.55f);
         }
         if (velY > 0.0f)
         {
             this.spriteRenderer.sprite = up;
-            this.boxcollider.size = new Vector2(0.22f, 0.57f);
+            this.boxcollider.size = new Vector2(0.20f, 0.5f);
         }
         if (velY < 0.0f)
         {
             this.spriteRenderer.sprite = down;
-            this.boxcollider.size = new Vector2(0.22f, 0.57f);
+            this.boxcollider.size = new Vector2(0.20f, 0.5f);
         }
     }
 

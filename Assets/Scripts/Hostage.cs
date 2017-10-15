@@ -10,7 +10,7 @@ public class Hostage : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.gameObject.name == "Player" && hostageGet == true) {
-			print ("hostage rescued!");
+			//print ("hostage rescued!");
 			//make gameobject disappear once the player collides with it
 			this.gameObject.GetComponent<Renderer> ().enabled = false;
 			hostageGet = false;
