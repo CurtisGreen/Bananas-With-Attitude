@@ -13,6 +13,7 @@ public class VisionCone : MonoBehaviour {
 	Player playerScript;
 	Text spottedText;
 	int spottedTimer = 10;
+    public float time = 1;
 
     /*
      * Initializing. Set the component from Guard.cs to playerScript
@@ -66,9 +67,10 @@ public class VisionCone : MonoBehaviour {
 			playerScript.transform.position = new Vector3(-5,0,0);
 			playerScript.lives--;
 			spottedText.text = ("You got Spotted");
+            Destroy(spottedText, time);
+           
         }
-        // 
-        
+
     }
 }
 
