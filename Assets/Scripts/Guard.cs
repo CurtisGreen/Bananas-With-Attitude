@@ -15,7 +15,7 @@ public class Guard : Character
     public Transform currentWaypoint, point1, point2;
     //public GameObject targetA, targetB;
     public float currentPosition = 0.0f;
-
+	public bool vert;
     protected BoxCollider2D boxcollider;
 
 
@@ -26,7 +26,12 @@ public class Guard : Character
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer.sprite == null)
         {
-            spriteRenderer.sprite = up;
+			if (vert) {
+				spriteRenderer.sprite = up;
+			} 
+			else {
+				spriteRenderer.sprite = right;	
+			}
         }
 
     }
