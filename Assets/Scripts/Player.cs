@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -14,6 +15,7 @@ public class Player : Character
     Animator animator;
     protected BoxCollider2D boxcollider;
     public int lives = 3;
+    public bool victory = false;
 
 	//keep count of number of bananas rescued
 	public int hostageCount = 0;
@@ -36,8 +38,13 @@ public class Player : Character
         PlayerMove();
         PlayerAnim();
 		if (lives == 0) {
-			// transition to defeat scene
-		}
+            SceneManager.LoadScene("Defeat Screen");
+            // transition to defeat scene
+        }
+        if (victory)
+        {
+            SceneManager.LoadScene("Victory Screen");
+        }
     }
 
     void PlayerMove()
