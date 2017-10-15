@@ -21,7 +21,7 @@ public class door : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.tag == "Player" && player.hostageCount == 4)
+        if (collider.gameObject.tag == "Player" && player.hostageCount == 1)
         {
             SceneManager.LoadScene("Victory Screen");
         }
