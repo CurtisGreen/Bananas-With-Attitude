@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/Defeat Screen.unity
     guid: 9626c78992bf49141b5093ec2fac54e7
+  - enabled: 1
+    path: Assets/Scene/Victory Screen.unity
+    guid: ef6475a362c64bb47baf606f525f4c4e

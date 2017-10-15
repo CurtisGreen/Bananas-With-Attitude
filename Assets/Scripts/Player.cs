@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
@@ -14,6 +15,7 @@ public class Player : Character
     Animator animator;
     protected BoxCollider2D boxcollider;
     public int lives = 3;
+    public bool victory = false;
 
     // Use this for initialization
     void Start()
@@ -32,6 +34,17 @@ public class Player : Character
     {
         PlayerMove();
         PlayerAnim();
+<<<<<<< HEAD
+=======
+		if (lives == 0) {
+            SceneManager.LoadScene("Defeat Screen");
+            // transition to defeat scene
+        }
+        if (victory)
+        {
+            SceneManager.LoadScene("Victory Screen");
+        }
+>>>>>>> 994131ecc29ef63735fd3f92b867872b1de82855
     }
 
     void PlayerMove()
